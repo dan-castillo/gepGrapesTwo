@@ -1,0 +1,19 @@
+<p><b><h2>To create new Gjs screen</h2></b> &nbsp;
+    <button class="btn btn-primary" (click)="gjsscreen()">Click me!</button></p>
+<p><b><h2>To view existing screens</h2></b> &nbsp;
+    <button class="btn btn-secondary" (click)="existing()">Click me!</button></p>
+<p><b><i><h6 *ngIf="show && (ids.length<=0)">No Screens to show!Try creating new!</h6></i></b></p>
+<ul class="list-group" *ngIf="show && (ids.length>0)">
+    <h4>Existing Screens:</h4>
+    <li class="list-group-item" *ngFor="let id of ids; let i = index">
+        <div class="row">
+            <div class="col-lg-6">
+                <div>Screen Name ---> {{scrn_names[i]}}</div>
+            </div>
+            <div class="col-lg-6">
+                <button class="btn btn-link" (click)="onEdit(id)">Edit</button>
+                <button class="btn btn-danger" (click)="onDelete(id)">Delete</button>
+            </div>
+        </div>
+    </li>
+</ul>
