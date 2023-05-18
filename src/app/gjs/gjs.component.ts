@@ -338,6 +338,133 @@ export class GjsComponent implements OnInit
     this.screen_id=this.route.snapshot.params['id'];
     console.log("Screen id",this.screen_id);
     this.getScreen();
+    this.blockmanagerLoad();
+  }
+
+  blockmanagerLoad() {
+    this.editor.BlockManager.add('QRCODE Card',
+    {
+      id: 'QRCODE card',
+      label: 'QRCODE card',
+      category: 'Basic',
+      content: ` <div>
+      <section class="intro">
+      <div class="container row">
+          <img src="https://i.postimg.cc/DwSWLmxQ/image-qr-code.png" alt="QR Code">
+          <h1>
+              Improve your front-end skills by building projects
+          </h1>
+          <p>
+              Scan the QR code to visit Frontend
+              Mentor and take your coding skills to
+              the next level
+          </p>
+      </div>
+  </section>
+  </div>
+  <style>
+  :root {
+    --White: hsl(0, 0%, 100%);
+    --Light-gray: hsl(212, 45%, 89%);
+    --Grayish-blue: hsl(220, 15%, 55%);
+    --Dark-blue: hsl(218, 44%, 22%);
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    --font-family: 'Outfit', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--Light-gray);
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+    max-width: 280px;
+    display: block;
+    border-radius: 15px;
+}
+
+.intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    box-shadow:3px 3px 3px 3px #a2a2a2 ;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+    border-bottom-left-radius:20px;
+}
+
+.container {
+    width: 80%;
+    max-width: 330px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: var(--White);
+    padding: 1.5325rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: var(--fw-bold);
+    color: var(--Dark-blue);
+}
+
+p {
+    margin: 0;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--Grayish-blue);
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: .6rem;
+    }
+}
+
+@media (max-width: 580px) {
+    h1 {
+        font-size: .7rem;
+    }
+}
+  </style>`,
+      draggable: false,
+      removable: true,
+      attributes:
+      {
+        class: 'fa fa-header'
+      }
+    });
   }
 
   close()
