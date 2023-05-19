@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import grapesjs from 'node_modules/grapesjs';
@@ -26,6 +27,7 @@ export class GjsComponent implements OnInit {
       container: '#gjs',
       fromElement: true,
       jsInHtml: true,
+      allowScripts: true,
       height: '800px',
       width: 'auto',
       showDevices: false,
@@ -342,7 +344,7 @@ export class GjsComponent implements OnInit {
     console.log("Screen id", this.screen_id);
     this.getScreen();
     this.blockmanagerLoad();
-    this.editor.config.allowScripts(true);
+    //this.editor.config.allowScripts(true);
   }
 
   blockmanagerLoad() {
