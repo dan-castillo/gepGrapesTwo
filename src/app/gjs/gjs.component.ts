@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import grapesjs from 'node_modules/grapesjs';
@@ -27,7 +26,6 @@ export class GjsComponent implements OnInit {
       container: '#gjs',
       fromElement: true,
       jsInHtml: true,
-      allowScripts: true,
       height: '800px',
       width: 'auto',
       showDevices: false,
@@ -121,7 +119,7 @@ export class GjsComponent implements OnInit {
               'border',
               'box-shadow',
               'background',
-              'background-color' // { id: 'background-bg', property: 'background', type: 'bg' }
+              'background-color' 
             ],
           }, {
             name: 'Extra',
@@ -298,8 +296,8 @@ export class GjsComponent implements OnInit {
         'grapesjs-plugin-forms': {},
         'gjs-blocks-basic':
         {
-          stylePrefix: 'gjs-', // no gjs- prefix
-          flexGrid: true, // use flexbox instead of tables
+          stylePrefix: 'gjs-', 
+          flexGrid: true, 
           addBasicStyle: true,
           blocks: ['column1', 'column2', 'column3', 'column3-7', 'text', 'link', 'image', 'video', 'map']
         }
@@ -343,183 +341,6 @@ export class GjsComponent implements OnInit {
     this.screen_id = this.route.snapshot.params['id'];
     console.log("Screen id", this.screen_id);
     this.getScreen();
-    this.blockmanagerLoad();
-    //this.editor.config.allowScripts(true);
-  }
-
-  blockmanagerLoad() {
-    this.editor.BlockManager.add('QRCODE Card',
-      {
-        id: 'QRCODE card',
-        label: 'QRCODE card',
-        category: 'Basic',
-        content: ` <div>
-      <section class="intro">
-      <div class="container row">
-          <img src="https://i.postimg.cc/DwSWLmxQ/image-qr-code.png" alt="QR Code">
-          <h1>
-              Improve your front-end skills by building projects
-          </h1>
-          <p>
-              Scan the QR code to visit Frontend
-              Mentor and take your coding skills to
-              the next level
-          </p>
-      </div>
-  </section>
-  </div>
-  <style>
-  :root {
-    --White: hsl(0, 0%, 100%);
-    --Light-gray: hsl(212, 45%, 89%);
-    --Grayish-blue: hsl(220, 15%, 55%);
-    --Dark-blue: hsl(218, 44%, 22%);
-
-    --fw-regular: 400;
-    --fw-bold: 700;
-
-    --font-family: 'Outfit', sans-serif;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: var(--Light-gray);
-    font-family: var(--font-family);
-    font-weight: var(--fw-regular);
-    line-height: 1.5;
-}
-
-img {
-    width: 100%;
-    max-width: 280px;
-    display: block;
-    border-radius: 15px;
-}
-
-.intro {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    box-shadow:3px 3px 3px 3px #a2a2a2 ;
-    border-top-left-radius:20px;
-    border-top-right-radius:20px;
-    border-bottom-right-radius:20px;
-    border-bottom-left-radius:20px;
-    border:1px solid #d8d8d8;
-}
-
-.container {
-    width: 80%;
-    max-width: 330px;
-    margin: 0 auto;
-    border-radius: 25px;
-    background-color: var(--White);
-    padding: 1.5325rem;
-}
-
-.row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-h1 {
-    margin: 0;
-    padding: 1rem 0;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: var(--fw-bold);
-    color: var(--Dark-blue);
-}
-
-p {
-    margin: 0;
-    font-size: 0.8rem;
-    text-align: center;
-    color: var(--Grayish-blue);
-}
-
-@media (max-width: 650px) {
-    h1 {
-        font-size: 1rem;
-    }
-
-    p {
-        font-size: .6rem;
-    }
-}
-
-@media (max-width: 580px) {
-    h1 {
-        font-size: .7rem;
-    }
-}
-  </style>`,
-        draggable: false,
-        removable: true,
-        attributes:
-        {
-          class: 'fa fa-header'
-        }
-      });
-      
-    // editor ag-grid custom blocks added
-    this.editor.BlockManager.add('Chart',
-      {
-        id: 'Chart',
-        label: 'Chart',
-        category: 'Basic',
-        //disable:true,
-        attributes:
-        {
-          class: 'fa-solid fa-folder-tree'
-        },
-        content: `<div> <canvas id="canvas"></canvas> </div>
-      <style>
-      .container {
-        width: 80%;
-        margin: 15px auto;
-      }
-      
-      h2 {
-        text-align: center;
-      }
-      </style>
-      <script> 
-      var ctx = document.getElementById("canvas").getContext('2d');
-  var barChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      datasets: [{
-        label: 'data-1',
-        data: [12, 19, 3, 17, 28, 24, 7],
-        backgroundColor: "rgba(255,0,0,1)"
-      }, {
-        label: 'data-2',
-        data: [30, 29, 5, 5, 20, 3, 10],
-        backgroundColor: "rgba(0,0,255,1)"
-      }]
-    }
-  });
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-      `,
-        draggable: false,
-        removable: true
-      });
-    // this.traitService.addGridTraits(ds, 'chart-type');
-
   }
 
   close() {
